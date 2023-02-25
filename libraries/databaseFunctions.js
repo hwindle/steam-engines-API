@@ -121,7 +121,25 @@ const updateEngine = async (req, res) => {
       message: `${err}: Database update error`
     });
   }
-
 };
 
-module.exports = { getAllEngines, addEngine, updateEngine };
+/***
+ * Delete one engine
+ * 
+ * takes an id, deletes that id
+ */
+const deleteEngine = async (req, res) => {
+  try {
+    const loco = await engineModel
+      .deleteOne({ _id: req.params.engineId });
+    res.status(200).json({
+      message: 'Successfully deleted that locomotive',
+    });
+  } catch(err) {
+    res.json({
+      message: `${err}: Database delete error`
+    });
+  }
+};
+
+module.exports = { getAllEngines, addEngine, updateEngine, deleteEngine };

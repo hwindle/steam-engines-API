@@ -5,9 +5,11 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 // import database functions
-const { getAllEngines, addEngine, updateEngine } = require('./libraries/databaseFunctions');
+const { getAllEngines, addEngine, updateEngine, deleteEngine } = require('./libraries/databaseFunctions');
 // import custom validation middleware
 const { checkEngineData } = require('./middlewares/checkEngineData');
+// not found handler
+const notFound = require('./handlers/notFound');
 
 const app = express();
 app.use(cors());
@@ -31,3 +33,8 @@ app.get('/allEngines', getAllEngines);
 app.post('/addEngine', addEngine);
 // localhost:3050/updateEngine PUT update endpoint
 app.put('/updateEngine/:engineId', updateEngine);
+// localhost:3050/deleteEngine DELETE endpoint
+app.delete('/deleteEngine/:engineId', deleteEngine);
+
+// a misstyped path.
+app.get('*', notFound);
