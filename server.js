@@ -6,6 +6,8 @@ const cors = require('cors');
 require('dotenv').config();
 // import database functions
 const { getAllEngines, addEngine, updateEngine } = require('./libraries/databaseFunctions');
+// import custom validation middleware
+const checkEngineData = require('./middlewares/checkEngineData');
 
 const app = express();
 app.use(cors());
@@ -25,6 +27,6 @@ app.listen(PORT, () => {
 // localhost:3050/allEngines endpoint
 app.get('/allEngines', getAllEngines);
 // localhost:3050/addEngine POST create endpoint
-app.post('/addEngine', addEngine);
+app.post('/addEngine', checkEngineData(), addEngine);
 // localhost:3050/updateEngine PUT update endpoint
-app.put('/updateEngine/:engineId', updateEngine);
+app.put('/updateEngine/:engineId', checkEngineData(),  updateEngine);
