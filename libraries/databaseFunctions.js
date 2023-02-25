@@ -42,12 +42,12 @@ function seedDatabase() {
 // run the seeder
 //seedDatabase();
 
-const getMakeupsFromDB = (req, res) => {
-  productModel.find({}, function (error, makeupArray) {
+const getAllEngines = (req, res) => {
+  engineModel.find({}, function (error, engineArray) {
     if (error) {
       console.error('DB error: ' + error);
     } else {
-      res.status(200).send(makeupArray);
+      res.status(200).send(engineArray);
     }
   });
 };
