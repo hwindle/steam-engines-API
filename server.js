@@ -5,7 +5,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 // import database functions
-const { getAllEngines } = require('./libraries/databaseFunctions');
+const { getAllEngines, addEngine } = require('./libraries/databaseFunctions');
 
 const app = express();
 app.use(cors());
@@ -24,3 +24,5 @@ app.listen(PORT, () => {
 
 // localhost:3050/allEngines endpoint
 app.get('/allEngines', getAllEngines);
+// localhost:3050/addEngine POST create endpoint
+app.post('/addEngine', addEngine);
