@@ -165,4 +165,11 @@ const addEngine = async (req, res) => {
   }
 };
 
-module.exports = { getAllEngines, addEngine };
+/**
+ * Update one engine
+ */
+const updateEngine = (req, res) => {
+
+};
+
+module.exports = { getAllEngines, addEngine, updateEngine };
