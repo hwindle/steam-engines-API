@@ -1,0 +1,26 @@
+{
+  "name": "backend-steam-engines",
+  "version": "1.0.0",
+  "description": "Uses Express, MongoDB, Mongoose and Node.js. Returns all steam engines. Can add a steam engine. Can also update/delete a steam engine.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hwindle/steam-engines-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hwindle/steam-engines-API/issues"
+  },
+  "homepage": "https://github.com/hwindle/steam-engines-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.10.0"
+  }
+}
