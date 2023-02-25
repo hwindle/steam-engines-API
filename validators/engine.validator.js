@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const engineSchema = Joi.object({
   designer: Joi.string().min(3).max(50).trim().required(),
-  railwayCompany: Joi.string().min(3).max(50).trim().optional(),
+  railwayCompany: Joi.string().min(1).max(50).trim().optional(),
   startYear: Joi.string().pattern(/^[0-9]+$/, 'year')
     .required(),
   endYear: Joi.string().pattern(/^[0-9]+$/, 'year')
@@ -17,4 +17,4 @@ const engineSchema = Joi.object({
   description: Joi.string().max(500).replace(/[!;"@#\?\|\\/]+/, '').optional()
 });
 
-modules.export = { engineSchema };
+module.export = { engineSchema };

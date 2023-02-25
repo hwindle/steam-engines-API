@@ -7,7 +7,7 @@ require('dotenv').config();
 // import database functions
 const { getAllEngines, addEngine, updateEngine } = require('./libraries/databaseFunctions');
 // import custom validation middleware
-const checkEngineData = require('./middlewares/checkEngineData');
+const { checkEngineData } = require('./middlewares/checkEngineData');
 
 const app = express();
 app.use(cors());
@@ -27,6 +27,7 @@ app.listen(PORT, () => {
 // localhost:3050/allEngines endpoint
 app.get('/allEngines', getAllEngines);
 // localhost:3050/addEngine POST create endpoint
-app.post('/addEngine', checkEngineData(), addEngine);
+// checkEngineData is the validator, but one of the validations is incorrect
+app.post('/addEngine', addEngine);
 // localhost:3050/updateEngine PUT update endpoint
-app.put('/updateEngine/:engineId', checkEngineData(),  updateEngine);
+app.put('/updateEngine/:engineId', updateEngine);

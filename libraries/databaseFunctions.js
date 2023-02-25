@@ -51,6 +51,19 @@ const getAllEngines = (req, res) => {
 };
 
 const addEngine = async (req, res) => {
+  // destructuring
+  const {
+    designer,
+    railwayCompany,
+    startYear,
+    endYear,
+    decade,
+    wheelbase,
+    wikiUrl,
+    imageUrl,
+    description,
+  } = req.body;
+
   // create the model
   let newEngine = await engineModel.create({
     designer,
@@ -81,9 +94,34 @@ const addEngine = async (req, res) => {
 /**
  * Update one engine
  */
-const updateEngine = (req, res) => {
+const updateEngine = async (req, res) => {
   // console.log params :engineId
   console.log(req.params.engineId);
+  // find the engine
+  const newContent = {
+    designer: req.body.designer,
+    railwayCompany: req.body.railwayCompany,
+    startYear: req.body.startYear,
+    endYear: req.body.endYear,
+    decade: req.body.decade,
+    wheelbase: req.body.wheelbase,
+    wikiUrl: req.body.wikiUrl,
+    imageUrl: req.body.imageUrl,
+    description: req.body.description
+  };
+
+  try {
+    const loco = await engineModel
+      .findOneAndUpdate({ _id: req.params.engineId }, newContent);
+    res.status(200).json({
+      message: 'Successfully updated',
+    });
+  } catch(err) {
+    res.json({
+      message: `${err}: Database update error`
+    });
+  }
+
 };
 
 module.exports = { getAllEngines, addEngine, updateEngine };
