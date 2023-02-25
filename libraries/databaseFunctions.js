@@ -39,9 +39,6 @@ function seedDatabase() {
   chineseOne.save();
 }
 
-// run the seeder
-//seedDatabase();
-
 const getAllEngines = (req, res) => {
   engineModel.find({}, function (error, engineArray) {
     if (error) {
@@ -52,7 +49,7 @@ const getAllEngines = (req, res) => {
   });
 };
 
-const addMakeupProduct = async (req, res) => {
+const addEngine = async (req, res) => {
   // empty values
   let cleanName = '';
   let cleanBrand = '';
@@ -108,3 +105,5 @@ const addMakeupProduct = async (req, res) => {
     }
   });
 };
+
+module.exports = { seedDatabase, getAllEngines };
