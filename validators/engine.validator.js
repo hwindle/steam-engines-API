@@ -14,6 +14,7 @@ const engineSchema = Joi.object({
   imageUrl: Joi.string().uri({
       allowRelative: true
     }).required(),
+  name: Joi.string().min(2).max(60).required(),
   description: Joi.string().max(500).replace(/[!;"@#\?\|\\/]+/, '').optional()
 });
 

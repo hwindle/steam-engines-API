@@ -17,6 +17,7 @@ const engineSchema = new mongoose.Schema({
   wheelbase: String,
   wikiUrl: String,
   imageUrl: String,
+  name: String,
   description: String,
 });
 
@@ -33,6 +34,7 @@ function seedDatabase() {
     wikiUrl:
       'https://collection.sciencemuseumgroup.org.uk/objects/co205814/chinese-government-railways-steam-locomotive-4-8-4-kf-class-no-7-steam-locomotive',
     imageUrl: './assets/engine_images/engine_01.jpg',
+    name: 'Class 07',
     description: 'Absolutely massive Chinese engine with a large cab.',
   });
 
@@ -61,6 +63,7 @@ const addEngine = async (req, res) => {
     wheelbase,
     wikiUrl,
     imageUrl,
+    name,
     description,
   } = req.body;
 
@@ -74,6 +77,7 @@ const addEngine = async (req, res) => {
     wheelbase,
     wikiUrl,
     imageUrl,
+    name,
     description,
   });
 
@@ -107,6 +111,7 @@ const updateEngine = async (req, res) => {
     wheelbase: req.body.wheelbase,
     wikiUrl: req.body.wikiUrl,
     imageUrl: req.body.imageUrl,
+    name: req.body.name,
     description: req.body.description
   };
 
